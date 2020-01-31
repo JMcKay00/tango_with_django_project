@@ -10,6 +10,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'tango_with_django_project.settings')
 
 import django
+import random
 django.setup()
 from rango.models import Category, Page
 
@@ -57,7 +58,8 @@ def populate():
         c = add_cat(cat, views, likes)
             
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            views = random.randint(1,100)
+            add_page(c, p['title'], p['url'], views)
             
     for c in Category.objects.all():
         
